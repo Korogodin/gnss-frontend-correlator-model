@@ -44,7 +44,7 @@ global Acum1 DL_CODE overflow_Acum1 position_Acum1 % Такт схемы фор�
 global Acum2 FR_CODE phase_Acum2 sin_Acum2 cos_Acum2 position_Acum2 SinCos_MODE Acum2_Brick % Такт схемы формирования sin/cos
 global position_L_Count Ilsum Ipsum Iesum Qlsum Qpsum Qesum ... % Выходные аккумуляторы и их сброс, вход аккумуляторов
         Ilsum_l Ipsum_l Iesum_l Qlsum_l Qpsum_l Qesum_l ...
-         Il_do Ip_do Ie_do Ql_do Qp_do Qe_do 
+         Il_do Ip_do Ie_do Ql_do Qp_do Qe_do N_tau
 global ed_RG % Регистр сдвига в пошаговой модели    
 global Enable_Mode
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

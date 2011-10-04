@@ -3,7 +3,7 @@ function out_cb_Noise_Callback(hObject, eventdata, handles)
 % Noise on/off button callback
 globals;
 noise_onoff =  get(hObject,'Value');
-%Noise = STD_Noise*randn(1,L);
+Noise = STD_Noise*randn(1,L);
 create_y(handles);
 
 end
