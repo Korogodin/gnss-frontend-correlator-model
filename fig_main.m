@@ -116,122 +116,46 @@ function varargout = fig_main_OutputFcn(hObject, eventdata, handles)
 varargout{1} = handles.output;
 
 
-% --- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ checkbox пїЅпїЅпїЅ/пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 function cb_Signal_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_Signal (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of cb_Signal
-
-globals;
-signal_onoff =  get(hObject,'Value');
-if signal_onoff
-    set(handles.st1, 'Visible', 'off');
-    set(handles.st2, 'Visible', 'off');
-else
-    set(handles.st1, 'Visible', 'on');
-    set(handles.st2, 'Visible', 'on');
-end
-create_y(handles);
+out_cb_Signal_Callback(hObject, eventdata, handles)
 
 
 
 % --- пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅ checkbox пїЅпїЅпїЅ/пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅ
 function cb_Noise_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_Noise (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+out_cb_Noise_Callback(hObject, eventdata, handles)
 
-% Hint: get(hObject,'Value') returns toggle state of cb_Noise
-
-globals;
-noise_onoff =  get(hObject,'Value');
-%Noise = STD_Noise*randn(1,L);
-create_y(handles);
 
 
 % --- Executes on button press in rb_ADC_inf.
 function rb_ADC_inf_Callback(hObject, eventdata, handles)
-% hObject    handle to rb_ADC_inf (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of rb_ADC_inf
-global AD_MODE
-AD_MODE = 1;
-create_y(handles);
+out_ADC_inf_Callback(hObject, eventdata, handles)
 
 
 % --- Executes on button press in rb_ADC_1bit.
 function rb_ADC_1bit_Callback(hObject, eventdata, handles)
-% hObject    handle to rb_ADC_1bit (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of rb_ADC_1bit
-global AD_MODE
-AD_MODE = 2;
-create_y(handles);
+out_rb_ADC_1bit_Callback(hObject, eventdata, handles)
 
 
 
 % --- Executes on button press in rb_YP4_Inf.
 function rb_YP4_Inf_Callback(hObject, eventdata, handles)
-% hObject    handle to rb_YP4_Inf (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of rb_YP4_Inf
-
-globals;
-YP4_BAND = 1;
-create_y(handles);
+out_rb_YP4_Inf_Callback(hObject, eventdata, handles);
 
 
 % --- Executes on button press in rb_YP4_2df.
 function rb_YP4_2df_Callback(hObject, eventdata, handles)
-% hObject    handle to rb_YP4_2df (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of rb_YP4_2df
-globals;
-YP4_BAND = 2;
-create_y(handles);
+out_rb_YP4_2df_Callback(hObject, eventdata, handles);
 
 
 % --- Executes on button press in rb_YP4_3.
 function rb_YP4_3_Callback(hObject, eventdata, handles)
-% hObject    handle to rb_YP4_3 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of rb_YP4_3
-globals;
-YP4_BAND = 3;
-create_y(handles);
+out_rb_YP4_3_Callback(hObject, eventdata, handles);
 
 
 
 function reg1_Callback(hObject, eventdata, handles)
-% hObject    handle to reg1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of reg1 as text
-%        str2double(get(hObject,'String')) returns contents of reg1 as a double
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-tmp = str2num(get(hObject, 'String'));
-if abs(tmp) > 0
-    set(hObject, 'String', '1');
-    RG(1) = 1;
-else
-    RG(1) = 0;
-end
-set(handles.ed_RG1, 'String', num2str(RG(1)));
+out_reg1_Callback(hObject, eventdata, handles);
 
 
 % --- Executes during object creation, after setting all properties.
@@ -248,23 +172,8 @@ end
 
 
 function reg4_Callback(hObject, eventdata, handles)
-% hObject    handle to reg4 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+out_reg4_Callback(hObject, eventdata, handles);
 
-% Hints: get(hObject,'String') returns contents of reg4 as text
-%        str2double(get(hObject,'String')) returns contents of reg4 as a double
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-tmp = str2num(get(hObject, 'String'));
-if abs(tmp) > 0
-    set(hObject, 'String', '1');
-    RG(4) = 1;
-else
-    RG(4) = 0;
-end
-set(handles.ed_RG4, 'String', num2str(RG(4)));
 
 % --- Executes during object creation, after setting all properties.
 function reg4_CreateFcn(hObject, eventdata, handles)
@@ -281,23 +190,8 @@ end
 
 
 function reg5_Callback(hObject, eventdata, handles)
-% hObject    handle to reg5 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+out_reg5_Callback(hObject, eventdata, handles);
 
-% Hints: get(hObject,'String') returns contents of reg5 as text
-%        str2double(get(hObject,'String')) returns contents of reg5 as a double
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-tmp = str2num(get(hObject, 'String'));
-if abs(tmp) > 0
-    set(hObject, 'String', '1');
-    RG(5) = 1;
-else
-    RG(5) = 0;
-end
-set(handles.ed_RG5, 'String', num2str(RG(5)));
 
 % --- Executes during object creation, after setting all properties.
 function reg5_CreateFcn(hObject, eventdata, handles)
@@ -314,23 +208,7 @@ end
 
 
 function reg6_Callback(hObject, eventdata, handles)
-% hObject    handle to reg6 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of reg6 as text
-%        str2double(get(hObject,'String')) returns contents of reg6 as a double
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-tmp = str2num(get(hObject, 'String'));
-if abs(tmp) > 0
-    set(hObject, 'String', '1');
-    RG(6) = 1;
-else
-    RG(6) = 0;
-end
-set(handles.ed_RG6, 'String', num2str(RG(6)));
+out_reg6_Callback(hObject, eventdata, handles);
 
 % --- Executes during object creation, after setting all properties.
 function reg6_CreateFcn(hObject, eventdata, handles)
@@ -347,23 +225,7 @@ end
 
 
 function reg7_Callback(hObject, eventdata, handles)
-% hObject    handle to reg7 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of reg7 as text
-%        str2double(get(hObject,'String')) returns contents of reg7 as a double
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-tmp = str2num(get(hObject, 'String'));
-if abs(tmp) > 0
-    set(hObject, 'String', '1');
-    RG(7) = 1;
-else
-    RG(7) = 0;
-end
-set(handles.ed_RG7, 'String', num2str(RG(7)));
+out_reg7_Callback(hObject, eventdata, handles);
 
 % --- Executes during object creation, after setting all properties.
 function reg7_CreateFcn(hObject, eventdata, handles)
@@ -380,23 +242,7 @@ end
 
 
 function reg8_Callback(hObject, eventdata, handles)
-% hObject    handle to reg8 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of reg8 as text
-%        str2double(get(hObject,'String')) returns contents of reg8 as a double
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-tmp = str2num(get(hObject, 'String'));
-if abs(tmp) > 0
-    set(hObject, 'String', '1');
-    RG(8) = 1;
-else
-    RG(8) = 0;
-end
-set(handles.ed_RG8, 'String', num2str(RG(8)));
+out_reg8_Callback(hObject, eventdata, handles);
 
 % --- Executes during object creation, after setting all properties.
 function reg8_CreateFcn(hObject, eventdata, handles)
@@ -411,25 +257,8 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-
 function reg9_Callback(hObject, eventdata, handles)
-% hObject    handle to reg9 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of reg9 as text
-%        str2double(get(hObject,'String')) returns contents of reg9 as a double
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-tmp = str2num(get(hObject, 'String'));
-if abs(tmp) > 0
-    set(hObject, 'String', '1');
-    RG(9) = 1;
-else
-    RG(9) = 0;
-end
-set(handles.ed_RG9, 'String', num2str(RG(9)));
+out_reg9_Callback(hObject, eventdata, handles);
 
 % --- Executes during object creation, after setting all properties.
 function reg9_CreateFcn(hObject, eventdata, handles)
@@ -444,223 +273,61 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-
-
-
 % --- Executes on button press in cb_RG1.
 function cb_RG1_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_RG1 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of cb_RG1
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-RG_xor(1) = get(hObject, 'Value');
-if RG_xor(1)
-    set(handles.txt_arr_RG1, 'Visible', 'off');
-else
-    set(handles.txt_arr_RG1, 'Visible', 'on');
-end
+out_cb_RG1_Callback(hObject, eventdata, handles);
 
 % --- Executes on button press in cb_RG2.
 function cb_RG2_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_RG2 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of cb_RG2
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-RG_xor(2) = get(hObject, 'Value');
-if RG_xor(2)
-    set(handles.txt_arr_RG2, 'Visible', 'off');
-else
-    set(handles.txt_arr_RG2, 'Visible', 'on');
-end
+out_cb_RG2_Callback(hObject, eventdata, handles);
 
 
 % --- Executes on button press in cb_RG3.
 function cb_RG3_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_RG3 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of cb_RG3
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-RG_xor(3) = get(hObject, 'Value');
-if RG_xor(3)
-    set(handles.txt_arr_RG3, 'Visible', 'off');
-else
-    set(handles.txt_arr_RG3, 'Visible', 'on');
-end
+out_cb_RG3_Callback(hObject, eventdata, handles);
 
 
 % --- Executes on button press in cb_RG4.
 function cb_RG4_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_RG4 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of cb_RG4
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-RG_xor(4) = get(hObject, 'Value');
-if RG_xor(4)
-    set(handles.txt_arr_RG4, 'Visible', 'off');
-else
-    set(handles.txt_arr_RG4, 'Visible', 'on');
-end
-
+out_cb_RG4_Callback(hObject, eventdata, handles);
 
 % --- Executes on button press in cb_RG5.
 function cb_RG5_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_RG5 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of cb_RG5
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-RG_xor(5) = get(hObject, 'Value');
-if RG_xor(5)
-    set(handles.txt_arr_RG5, 'Visible', 'off');
-else
-    set(handles.txt_arr_RG5, 'Visible', 'on');
-end
+out_cb_RG5_Callback(hObject, eventdata, handles);
 
 
 % --- Executes on button press in cb_RG6.
 function cb_RG6_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_RG6 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of cb_RG6
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-RG_xor(6) = get(hObject, 'Value');
-if RG_xor(6)
-    set(handles.txt_arr_RG6, 'Visible', 'off');
-else
-    set(handles.txt_arr_RG6, 'Visible', 'on');
-end
+out_cb_RG6_Callback(hObject, eventdata, handles);
 
 
 % --- Executes on button press in cb_RG7.
 function cb_RG7_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_RG7 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of cb_RG7
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-RG_xor(7) = get(hObject, 'Value');
-if RG_xor(7)
-    set(handles.txt_arr_RG7, 'Visible', 'off');
-else
-    set(handles.txt_arr_RG7, 'Visible', 'on');
-end
+out_cb_RG7_Callback(hObject, eventdata, handles);
 
 
 % --- Executes on button press in cb_RG8.
 function cb_RG8_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_RG8 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of cb_RG8
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-RG_xor(8) = get(hObject, 'Value');
-if RG_xor(8)
-    set(handles.txt_arr_RG8, 'Visible', 'off');
-else
-    set(handles.txt_arr_RG8, 'Visible', 'on');
-end
+out_cb_RG8_Callback(hObject, eventdata, handles);
 
 
 % --- Executes on button press in cb_RG9.
 function cb_RG9_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_RG9 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of cb_RG9
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-RG_xor(9) = get(hObject, 'Value');
-if RG_xor(9)
-    set(handles.txt_arr_RG9, 'Visible', 'off');
-else
-    set(handles.txt_arr_RG9, 'Visible', 'on');
-end
+out_cb_RG9_Callback(hObject, eventdata, handles);
 
 
 % --- Executes on button press in but_RG_Step.
 function but_RG_Step_Callback(hObject, eventdata, handles)
-% hObject    handle to but_RG_Step (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-globals;
-if Step_Count < 511
-    RG_Step(handles);
-else
-    DoIt();
-end
-
+out_but_RG_Step_Callback(hObject, eventdata, handles);
 
 
 % --- Executes on button press in but_CalcAll.
 function but_CalcAll_Callback(hObject, eventdata, handles)
-% hObject    handle to but_CalcAll (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-globals;
-EnableMode(handles, 2);
-set_CalcStatus(handles, 'Идёт расчёт ПСП дальномерного кода...');
-while Step_Count < 512
-    RG_Step(handles);
-    drawnow;
-end
-set_CalcStatus(handles, 'Расчёт ПСП дальномерного кода успешно завершен');
-ed_RG = RG;
-CorrReset(handles);
-EnableMode(handles, 3);
-DoIt(handles);
-
-
+out_but_CalcAll_Callback(hObject, eventdata, handles);
 
 
 function reg2_Callback(hObject, eventdata, handles)
-% hObject    handle to reg2 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of reg2 as text
-%        str2double(get(hObject,'String')) returns contents of reg2 as a double
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-tmp = str2num(get(hObject, 'String'));
-if abs(tmp) > 0
-    set(hObject, 'String', '1');
-    RG(2) = 1;
-else
-    RG(2) = 0;
-end
-set(handles.ed_RG2, 'String', num2str(RG(2)));
+out_reg2_Callback(hObject, eventdata, handles);
 
 % --- Executes during object creation, after setting all properties.
 function reg2_CreateFcn(hObject, eventdata, handles)
@@ -675,25 +342,8 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
 end
 
 
-
 function reg3_Callback(hObject, eventdata, handles)
-% hObject    handle to reg3 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: get(hObject,'String') returns contents of reg3 as text
-%        str2double(get(hObject,'String')) returns contents of reg3 as a double
-globals;
-EnableMode(handles, 1);
-StepReset(handles);
-tmp = str2num(get(hObject, 'String'));
-if abs(tmp) > 0
-    set(hObject, 'String', '1');
-    RG(3) = 1;
-else
-    RG(3) = 0;
-end
-set(handles.ed_RG3, 'String', num2str(RG(3)));
+out_reg3_Callback(hObject, eventdata, handles);
 
 % --- Executes during object creation, after setting all properties.
 function reg3_CreateFcn(hObject, eventdata, handles)
@@ -707,29 +357,10 @@ if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgr
     set(hObject,'BackgroundColor','white');
 end
 
-function StepReset(handles)
-    globals;
-    Step_Count = 1; % Step Reset
-    Code_Sig_Count = 0;
-    set(handles.st_StepCounter, 'String', '1');
-    MCode_gen = nan(1, 511);
-    MCode_gen_sig = nan(1, 51100);
-    MCode_gen(1) = RG(7);
-    Code_Sig_Step(handles);
-
-
 
 % --- Executes on selection change in pop_IQ.
 function pop_IQ_Callback(hObject, eventdata, handles)
-% hObject    handle to pop_IQ (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hints: contents = get(hObject,'String') returns pop_IQ contents as cell array
-%        contents{get(hObject,'Value')} returns selected item from pop_IQ
-globals;
-IQplot = get(hObject, 'Value');
-plot_IQ(handles);
+out_pop_IQ_Callback(hObject, eventdata, handles);
 
 % --- Executes during object creation, after setting all properties.
 function pop_IQ_CreateFcn(hObject, eventdata, handles)
@@ -761,6 +392,7 @@ function rb_ADC_inf_ButtonDownFcn(hObject, eventdata, handles)
 
 
 % --- Executes on button press in pushbutton4.
+% РђС‚Р°РІРёР·Рј? Atavism?
 function pushbutton4_Callback(hObject, eventdata, handles)
 % hObject    handle to pushbutton4 (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
@@ -774,21 +406,8 @@ StepAcum3(handles);
 
 % --- Executes on slider movement.
 function sl_FR_CODE_Callback(hObject, eventdata, handles)
-% hObject    handle to sl_FR_CODE (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+out_sl_FR_CODE_Callback(hObject, eventdata, handles);
 
-% Hints: get(hObject,'Value') returns position of slider
-%        get(hObject,'Min') and get(hObject,'Max') to determine range of slider
-global FR_CODE Fd f0
-Fdop = get(hObject,'Value');
-set(handles.txt_Fdop, 'String', ['dF = ' num2str(round(Fdop)) ' Гц']);
-FR_CODE = f0 + Fdop;
-    tmp = get(handles.txt_Acum2_Bracket_FR_CODE, 'Position');
-    tmp(4) = (120 / (Fd / FR_CODE));
-    set(handles.txt_Acum2_Bracket_FR_CODE, 'Position', tmp);
-Gen_opor();
-DoIt(handles);
 
 % --- Executes during object creation, after setting all properties.
 function sl_FR_CODE_CreateFcn(hObject, eventdata, handles)
@@ -804,27 +423,12 @@ end
 
 % --- Executes on button press in rb_SinCos_Inf.
 function rb_SinCos_Inf_Callback(hObject, eventdata, handles)
-% hObject    handle to rb_SinCos_Inf (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
+out_rb_SinCos_Inf_Callback(hObject, eventdata, handles);
 
-% Hint: get(hObject,'Value') returns toggle state of rb_SinCos_Inf
-global SinCos_MODE
-SinCos_MODE = 1;
-Gen_opor();
-DoIt(handles);
 
 % --- Executes on button press in rb_SinCos_4bita.
 function rb_SinCos_4bita_Callback(hObject, eventdata, handles)
-% hObject    handle to rb_SinCos_4bita (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of rb_SinCos_4bita
-global SinCos_MODE
-SinCos_MODE = 2;
-Gen_opor();
-DoIt(handles);
+out_rb_SinCos_4bita_Callback(hObject, eventdata, handles)
 
 
 % --- Executes when user attempts to close fig_main.
@@ -853,60 +457,11 @@ CorrReset(handles);
 
 % --- Executes on button press in but_OnOffClock.
 function but_OnOffClock_Callback(hObject, eventdata, handles)
-% hObject    handle to but_OnOffClock (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-globals;
-if get(handles.but_OnOffClock, 'Value')
-    EnableMode(handles, 6);
-    for l = (l+1):L
-        if Enable_Mode == 6
-            h = ministtem(handles.axes_in, t, y);
-                set(h,'MarkerSize', 3)
-                set(handles.axes_in, 'XLim', [t(l)-Td*10 t(l)+Td/3;]);
-
-            StepAcum1(handles);
-            StepAcum2(handles);
-            StepAcum3(handles);
-
-            DoIt2;
-            
-            plotIt2;
-
-            drawnow;
-        else
-            l = l - 1;
-            break;
-        end
-    end
-else
-    EnableMode(handles, 4);
-end
+out_but_OnOffClock_Callback(hObject, eventdata, handles);
 
 % --- Executes on button press in but_OneClock.
 function but_OneClock_Callback(hObject, eventdata, handles)
-% hObject    handle to but_OneClock (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-globals;
-EnableMode(handles, 5);
-    l = l + 1;
-
-            h = ministtem(handles.axes_in, t, y);
-                set(h,'MarkerSize', 3)
-                set(handles.axes_in, 'XLim', [t(l)-Td*10 t(l)+Td/3;]);
-
-            StepAcum1(handles);
-            StepAcum2(handles);
-            StepAcum3(handles);
-
-            DoIt2;
-            
-            plotIt2;
-
-            drawnow;
-
-EnableMode(handles, 4);
+out_but_OneClock_Callback(hObject, eventdata, handles);
 
 
 
@@ -1427,107 +982,23 @@ function pushbutton8_Callback(hObject, eventdata, handles)
 
 % --- Executes on button press in cb_jitter.
 function cb_jitter_Callback(hObject, eventdata, handles)
-% hObject    handle to cb_jitter (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-
-% Hint: get(hObject,'Value') returns toggle state of cb_jitter
-global jitter_onoff
-jitter_onoff =  get(hObject,'Value');
-if jitter_onoff
-   set(handles.txt_Jitter, 'Visible', 'off');
-else
-   set(handles.txt_Jitter, 'Visible', 'on');
-end
-%Noise = STD_Noise*randn(1,L);
-create_y(handles);
+out_cb_jitter_Callback(hObject, eventdata, handles);
 
 
 % --- Executes on button press in pushbutton9.
 function pushbutton9_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton9 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-global f0
-hF = figure;
-axesbig = copyobj(handles.axes_YP4, hF);
-set(hF, 'Position', [403   246   560   420]);
-set(axesbig, 'Units', 'Normalized', ...
-                   'Position',[0.1300    0.1100    0.7750    0.8150], ...
-                       'YTickLabelMode', 'auto');
-reset(axesbig);
-reset(hF);
-xlim(axesbig, [0 2*f0]);
-grid on
-xlabel('f, Гц')
-ylabel('|fft(y)|, В/Гц')
+out_open_axes_YP4(handles);
 
 
 % --- Executes on button press in pushbutton10.
 function pushbutton10_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton10 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-hF = figure;
-axesbig = copyobj(handles.axes_ADC, hF);
-set(hF, 'Position', [403   246   560   420]);
-set(axesbig, 'Units', 'Normalized', ...
-                   'Position',[0.1300    0.1100    0.7750    0.8150], ...
-                       'YTickLabelMode', 'auto');
-reset(axesbig);
-reset(hF);
-grid on
-xlabel('t, с')
-ylabel('y')
+out_open_axes_ADC(handles);
 
 
 % --- Executes on button press in pushbutton11.
 function pushbutton11_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton11 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-global IQplot
-hF = figure;
-axesbig = copyobj(handles.axes_I, hF);
-set(hF, 'Position', [403   246   560   420]);
-set(axesbig, 'Units', 'Normalized', ...
-                   'Position',[0.1300    0.1100    0.7750    0.8150], ...
-                       'YTickLabelMode', 'auto');
-reset(axesbig);
-reset(hF);
-grid on
-xlabel('t, \tau_{chip}')
-switch IQplot
-    case 1
-        ylabel('I_p')
-    case 2
-        ylabel('I_e')
-    case 3
-        ylabel('I_l')
-end
-
+out_open_axes_I(handles);
 
 % --- Executes on button press in pushbutton12.
 function pushbutton12_Callback(hObject, eventdata, handles)
-% hObject    handle to pushbutton12 (see GCBO)
-% eventdata  reserved - to be defined in a future version of MATLAB
-% handles    structure with handles and user data (see GUIDATA)
-global IQplot
-hF = figure;
-axesbig = copyobj(handles.axes_Q, hF);
-set(hF, 'Position', [403   246   560   420]);
-set(axesbig, 'Units', 'Normalized', ...
-                   'Position',[0.1300    0.1100    0.7750    0.8150], ...
-                       'YTickLabelMode', 'auto');
-reset(axesbig);
-reset(hF);
-grid on
-xlabel('t, \tau_{chip}')
-switch IQplot
-    case 1
-        ylabel('Q_p')
-    case 2
-        ylabel('Q_e')
-    case 3
-        ylabel('Q_l')
-end
+out_open_axes_Q(handles);

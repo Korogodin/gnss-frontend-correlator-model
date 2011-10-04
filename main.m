@@ -4,35 +4,50 @@ close all
 
 globals;
 
-h_fig_main = guihandles(fig_main);
+addpath( [pwd '/outside_callback_func'] );
+addpath( [pwd '/outside_callback_func/out_reg'] );
+addpath( [pwd '/outside_callback_func/out_ADC'] );
+addpath( [pwd '/outside_callback_func/out_YP4'] );
+addpath( [pwd '/outside_callback_func/out_RG'] );
+addpath( [pwd '/outside_callback_func/out_SinCos'] );
+addpath( [pwd '/outside_callback_func/out_Clock'] );
+addpath( [pwd '/outside_callback_func/open_axes_buttons'] );
 
-Enable_Mode = 1; % ПСП не рассчитана, производится установка параметров
+addpath( [pwd '/outside_func'] );
+
+if (ispc) % if system is Win
+    h_fig_main = guihandles(fig_main);
+elseif (isunix)
+    h_fig_main = guihandles(fig_main_L);
+end
+
+Enable_Mode = 1; % РџРЎРџ РЅРµ СЂР°СЃСЃС‡РёС‚Р°РЅР°, РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ СѓСЃС‚Р°РЅРѕРІРєР° РїР°СЂР°РјРµС‚СЂРѕРІ
 EnableMode(h_fig_main, Enable_Mode);
 
-Tc = 0.001; % Время накопления в корреляторах
-L = 51100; % Точек с тактом Td на одном периоде коррелирования
+Tc = 0.001; % Р’СЂРµРјСЏ РЅР°РєРѕРїР»РµРЅРёСЏ РІ РєРѕСЂСЂРµР»СЏС‚РѕСЂР°С…
+L = 51100; % РўРѕС‡РµРє СЃ С‚Р°РєС‚РѕРј Td РЅР° РѕРґРЅРѕРј РїРµСЂРёРѕРґРµ РєРѕСЂСЂРµР»РёСЂРѕРІР°РЅРёСЏ
 Td = Tc / L; Fd = 1 / Td;
-t = (1:L)*Td; % Время на одном интервале коррелирования
+t = (1:L)*Td; % Р’СЂРµРјСЏ РЅР° РѕРґРЅРѕРј РёРЅС‚РµСЂРІР°Р»Рµ РєРѕСЂСЂРµР»РёСЂРѕРІР°РЅРёСЏ
 f0 = 6e6; FR_CODE = f0; 
-Acum2_Brick = 120 / (Fd / FR_CODE); % Высота кирпича для данной частоты
+Acum2_Brick = 120 / (Fd / FR_CODE); % Р’С‹СЃРѕС‚Р° РєРёСЂРїРёС‡Р° РґР»СЏ РґР°РЅРЅРѕР№ С‡Р°СЃС‚РѕС‚С‹
 
-d_phase = rand(1,1)*2*pi; % Начальная фаза принимаемого сигнала
+d_phase = rand(1,1)*2*pi; % РќР°С‡Р°Р»СЊРЅР°СЏ С„Р°Р·Р° РїСЂРёРЅРёРјР°РµРјРѕРіРѕ СЃРёРіРЅР°Р»Р°
 d_phase = 0;
 A = 1; S = A*cos(2*pi*f0*t + d_phase); signal_onoff = 1; noise_onoff = 0; jitter_onoff = 0;
 Jitter = 2*A*cos(2*pi*(f0-100000)*t);
 qcno_dB = 45; qcno = 10^(qcno_dB/10); 
-STD_Noise = A / sqrt(4 * qcno * Td); % СКО шума
+STD_Noise = A / sqrt(4 * qcno * Td); % РЎРљРћ С€СѓРјР°
 Noise = STD_Noise*randn(1,L); 
-AD_MODE = 1; % 1 - режим АЦП
-YP4_BAND = 1; % Полоса УПЧ
-IQplot = 1; % Что выводим на плот
+AD_MODE = 1; % 1 - СЂРµР¶РёРј РђР¦Рџ
+YP4_BAND = 1; % РџРѕР»РѕСЃР° РЈРџР§
+IQplot = 1; % Р§С‚Рѕ РІС‹РІРѕРґРёРј РЅР° РїР»РѕС‚
 
 load MCode.mat
 
-% EpsFreq = 0; % Ошибка по частоте
-Gen_opor(); % Генерируем вектора опорных колебаний
-create_y(h_fig_main); % Генерим сигнал, пропускаем через УПЧ, рисуем
-set_CalcStatus(h_fig_main, 'Следуйте плану проведения лабораторной работы');
+% EpsFreq = 0; % РћС€РёР±РєР° РїРѕ С‡Р°СЃС‚РѕС‚Рµ
+Gen_opor(); % Р“РµРЅРµСЂРёСЂСѓРµРј РІРµРєС‚РѕСЂР° РѕРїРѕСЂРЅС‹С… РєРѕР»РµР±Р°РЅРёР№
+create_y(h_fig_main); % Р“РµРЅРµСЂРёРј СЃРёРіРЅР°Р», РїСЂРѕРїСѓСЃРєР°РµРј С‡РµСЂРµР· РЈРџР§, СЂРёСЃСѓРµРј
+set_CalcStatus(h_fig_main, 'РЎР»РµРґСѓР№С‚Рµ РїР»Р°РЅСѓ РїСЂРѕРІРµРґРµРЅРёСЏ Р»Р°Р±РѕСЂР°С‚РѕСЂРЅРѕР№ СЂР°Р±РѕС‚С‹');
 
 MCode_gen = nan(1,511); 
 MCode_gen_sig = nan(1,L);
@@ -58,9 +73,3 @@ position_L_Count = get(h_fig_main.txt_L_Count_Front, 'Position');
 Ilsum = 0; Ipsum = 0; Iesum = 0; Qlsum = 0; Qpsum = 0; Qesum = 0; 
 Ilsum_l = nan(1,L); Ipsum_l = nan(1,L); Iesum_l = nan(1,L); Qlsum_l = nan(1,L); Qpsum_l = nan(1,L); Qesum_l = nan(1,L);
 Il_do = nan(1,L); Ip_do = nan(1,L); Ie_do = nan(1,L); Ql_do = nan(1,L); Qp_do = nan(1,L); Qe_do = nan(1,L);
-
-
-
-
-
-
