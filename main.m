@@ -1,4 +1,4 @@
-clear 
+clear all
 clc
 close all
 
@@ -68,6 +68,6 @@ position_Acum2 = get(h_fig_main.txt_Acum2_Front, 'Position');
 
 position_L_Count = get(h_fig_main.txt_L_Count_Front, 'Position');
 
-Ilsum = 0; Ipsum = 0; Iesum = 0; Qlsum = 0; Qpsum = 0; Qesum = 0; 
-Ilsum_l = nan(1,L); Ipsum_l = nan(1,L); Iesum_l = nan(1,L); Qlsum_l = nan(1,L); Qpsum_l = nan(1,L); Qesum_l = nan(1,L);
-Il_do = nan(1,L); Ip_do = nan(1,L); Ie_do = nan(1,L); Ql_do = nan(1,L); Qp_do = nan(1,L); Qe_do = nan(1,L);
+N_tau = 200; % Число сдвигов ПСП в каждую сторону (не в чипах, а в точках)
+inits_IQsum; % Определить массивы для будущих корреляционных сумм
+
