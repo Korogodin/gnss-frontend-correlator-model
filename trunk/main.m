@@ -10,6 +10,8 @@ if (ispc) % if system is Win
     h_fig_main = guihandles(fig_main);
 elseif (isunix)
     h_fig_main = guihandles(fig_main_L);
+    set_linux_fonts;
+    set_linux_cb_size;
 end
 
 Enable_Mode = 1; % ПСП не рассчитана, производится установка параметров
