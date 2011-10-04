@@ -2,7 +2,7 @@ function EnableMode(handles, EM)
 global Enable_Mode
 Enable_Mode = EM;
 switch Enable_Mode
-    case 1 % ПСП не рассчитана, производится установка параметров
+    case 1 % РџРЎРџ РЅРµ СЂР°СЃСЃС‡РёС‚Р°РЅР°, РїСЂРѕРёР·РІРѕРґРёС‚СЃСЏ СѓСЃС‚Р°РЅРѕРІРєР° РїР°СЂР°РјРµС‚СЂРѕРІ
         set(handles.sl_FR_CODE, 'Enable', 'off');
         set(handles.cb_Signal, 'Enable', 'on');
         set(handles.cb_Noise, 'Enable', 'on');
@@ -25,7 +25,7 @@ switch Enable_Mode
         set(handles.but_OneClock, 'Enable', 'off');    
         set(handles.but_OnOffClock, 'Enable', 'off');   
         set(handles.but_CalcAll, 'Enable', 'on');        
-    case 2 % Идёт расчет ПСП
+    case 2 % РРґС‘С‚ СЂР°СЃС‡РµС‚ РџРЎРџ
         set(handles.sl_FR_CODE, 'Enable', 'off');
         set(handles.cb_Signal, 'Enable', 'off');
         set(handles.cb_Noise, 'Enable', 'off');
@@ -48,7 +48,7 @@ switch Enable_Mode
         set(handles.but_OneClock, 'Enable', 'off');    
         set(handles.but_OnOffClock, 'Enable', 'off');   
         set(handles.but_CalcAll, 'Enable', 'off');        
-    case 3 % Идёт расчет по векторной модели
+    case 3 % РРґС‘С‚ СЂР°СЃС‡РµС‚ РїРѕ РІРµРєС‚РѕСЂРЅРѕР№ РјРѕРґРµР»Рё
         set(handles.sl_FR_CODE, 'Enable', 'off');
         set(handles.cb_Signal, 'Enable', 'off');
         set(handles.cb_Noise, 'Enable', 'off');
@@ -71,7 +71,7 @@ switch Enable_Mode
         set(handles.but_OneClock, 'Enable', 'off');    
         set(handles.but_OnOffClock, 'Enable', 'off');   
         set(handles.but_CalcAll, 'Enable', 'off');        
-    case 4 % ПСП рассчитана, расчеты по векторной модели завершены, возможна пауза тактовой модели
+    case 4 % РџРЎРџ СЂР°СЃСЃС‡РёС‚Р°РЅР°, СЂР°СЃС‡РµС‚С‹ РїРѕ РІРµРєС‚РѕСЂРЅРѕР№ РјРѕРґРµР»Рё Р·Р°РІРµСЂС€РµРЅС‹, РІРѕР·РјРѕР¶РЅР° РїР°СѓР·Р° С‚Р°РєС‚РѕРІРѕР№ РјРѕРґРµР»Рё
         set(handles.sl_FR_CODE, 'Enable', 'off');
         set(handles.cb_Signal, 'Enable', 'on');
         set(handles.cb_Noise, 'Enable', 'on');
@@ -94,7 +94,7 @@ switch Enable_Mode
         set(handles.but_OneClock, 'Enable', 'on');    
         set(handles.but_OnOffClock, 'Enable', 'on'); 
         set(handles.but_CalcAll, 'Enable', 'off');        
-    case 5 % ПСП рассчитана, запущен один такт пошаговой модели 
+    case 5 % РџРЎРџ СЂР°СЃСЃС‡РёС‚Р°РЅР°, Р·Р°РїСѓС‰РµРЅ РѕРґРёРЅ С‚Р°РєС‚ РїРѕС€Р°РіРѕРІРѕР№ РјРѕРґРµР»Рё 
         set(handles.sl_FR_CODE, 'Enable', 'off');        
         set(handles.cb_Signal, 'Enable', 'off');        
         set(handles.cb_Noise, 'Enable', 'off');
@@ -117,7 +117,7 @@ switch Enable_Mode
         set(handles.but_OneClock, 'Enable', 'off');    
         set(handles.but_OnOffClock, 'Enable', 'off');  
         set(handles.but_CalcAll, 'Enable', 'off');        
-    case 6 % ПСП рассчитана, запущена последовательность тактов пошаговой модели 
+    case 6 % РџРЎРџ СЂР°СЃСЃС‡РёС‚Р°РЅР°, Р·Р°РїСѓС‰РµРЅР° РїРѕСЃР»РµРґРѕРІР°С‚РµР»СЊРЅРѕСЃС‚СЊ С‚Р°РєС‚РѕРІ РїРѕС€Р°РіРѕРІРѕР№ РјРѕРґРµР»Рё 
         set(handles.sl_FR_CODE, 'Enable', 'off');        
         set(handles.cb_Signal, 'Enable', 'off');        
         set(handles.cb_Noise, 'Enable', 'off');

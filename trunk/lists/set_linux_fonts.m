@@ -45,3 +45,5 @@ set(h.text49, 'FontSize', 8)
 
 set(h.text50, 'FontSize', 8)
 set(h.text51, 'FontSize', 8)
+
+set(h.pop_IQ, 'FontSize', 8);
