@@ -14,6 +14,7 @@ addpath( [pwd '/outside_callback_func/out_Clock'] );
 addpath( [pwd '/outside_callback_func/open_axes_buttons'] );
 
 addpath( [pwd '/outside_func'] );
+addpath( [pwd '/lists'] );
 
 if (ispc) % if system is Win
     h_fig_main = guihandles(fig_main);
