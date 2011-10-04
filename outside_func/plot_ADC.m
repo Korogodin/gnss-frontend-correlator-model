@@ -1,5 +1,5 @@
 function ress = plot_ADC(h_fig_main)
-%PLOT_ADC Функция отрисовки axes_ADC
+%PLOT_ADC Р¤СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё axes_ADC
 
 globals;
 
@@ -10,4 +10,3 @@ set(h_fig_main.axes_ADC, 'XLim', [0 Tc/204]);
 ress = 1;
 
 end
-

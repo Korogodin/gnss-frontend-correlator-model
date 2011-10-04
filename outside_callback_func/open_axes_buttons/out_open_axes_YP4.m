@@ -13,7 +13,7 @@ reset(hF);
 xlim(axesbig, [0 2*f0]);
 grid on
 xlabel('f, Гц')
-ylabel('|fft(y)|, В/Гц')
+ylabel('|fft(y)|, dB')
 
 
 end

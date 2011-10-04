@@ -8,3 +8,4 @@ addpath( [pwd '/outside_callback_func/out_Clock'] );
 addpath( [pwd '/outside_callback_func/open_axes_buttons'] );
 
 addpath( [pwd '/outside_func'] );
+addpath( [pwd '/filters'] );
