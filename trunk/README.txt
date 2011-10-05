@@ -1,6 +1,6 @@
 == Starting ==
 
-Launch main.m in Matlab to start program  
+Launch main.m by Matlab to start program  
 
 == Repository ==
 

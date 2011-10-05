@@ -1,5 +1,5 @@
 function ress = plot_IQ(h_fig_main)
-%PLOT_ADC Функция отрисовки axes_ADC
+%PLOT_ADC Р¤СѓРЅРєС†РёСЏ РѕС‚СЂРёСЃРѕРІРєРё axes_ADC
 
 globals;
 
@@ -8,7 +8,7 @@ ro = (absEpsTau < 1) - absEpsTau.*(absEpsTau < 1);
 if (AD_MODE == 2) && (noise_onoff)
     ro = ro / STD_Noise / 1.2;
 end
-ro = ro * 8; % Т.к. sinop, cosop с амплитудой 8
+ro = ro * 7; % Рў.Рє. sinop, cosop СЃ Р°РјРїР»РёС‚СѓРґРѕР№ 7
 
 switch IQplot
  case 1
@@ -36,9 +36,18 @@ end
     grid(h_fig_main.axes_I, 'on');
     grid(h_fig_main.axes_Q, 'on');
 
-h = legend(h_fig_main.axes_I, 'Эксп','СЭ',1);
+if (isunix)    
+    h = legend(h_fig_main.axes_I, 'Exp','SE',1);
+else
+    h = legend(h_fig_main.axes_I, 'Р­РєСЃРї','РЎР­',1);
+end
 set(h, 'Box', 'off')
-h = legend(h_fig_main.axes_Q, 'Эксп','СЭ',1);
+
+if (isunix)    
+    h = legend(h_fig_main.axes_Q, 'Exp','SE',1);
+else
+    h = legend(h_fig_main.axes_Q, 'Р­РєСЃРї','РЎР­',1);
+end
 set(h, 'Box', 'off')
 
 %set(h_fig_main.axes_ADC, 'XTick', []);
@@ -47,4 +56,3 @@ set(h, 'Box', 'off')
 ress = 1;
 
 end
-

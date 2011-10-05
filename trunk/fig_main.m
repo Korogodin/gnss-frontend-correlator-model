@@ -134,7 +134,7 @@ out_ADC_inf_Callback(hObject, eventdata, handles)
 
 % --- Executes on button press in rb_ADC_1bit.
 function rb_ADC_1bit_Callback(hObject, eventdata, handles)
-out_rb_ADC_1bit_Callback(hObject, eventdata, handles)
+out_ADC_1bit_Callback(hObject, eventdata, handles)
 
 
 
