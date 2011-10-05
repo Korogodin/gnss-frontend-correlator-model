@@ -15,8 +15,8 @@ if (Enable_Mode == 3)... % Mode: Идёт расчет по векторной �
         k = k + 1;    
         EpsTau(k) = i/(N_tau/2);
         MCode_Shifted_p = circshift(MCode_gen_sig, [0 i]);
-        MCode_Shifted_e = circshift(MCode_gen_sig, [0 i-4]);
-        MCode_Shifted_l = circshift(MCode_gen_sig, [0 i+4]);
+        MCode_Shifted_e = circshift(MCode_gen_sig, [0 i-50]);
+        MCode_Shifted_l = circshift(MCode_gen_sig, [0 i+50]);
 
         Ip(k) = MCode_Shifted_p * ycosop; 
         Qp(k) = MCode_Shifted_p * ysinop;

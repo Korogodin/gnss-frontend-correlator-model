@@ -26,11 +26,11 @@ f0 = 6e6; FR_CODE = f0;
 Acum2_Brick = 120 / (Fd / FR_CODE); % Высота кирпича для данной частоты
 
 d_phase = rand(1,1)*2*pi; % Начальная фаза принимаемого сигнала
-% d_phase = 0;
+d_phase = 0;
 A = 1; 
 S = A*cos(2*pi*f0*t + d_phase); signal_onoff = 1; noise_onoff = 0; jammer_onoff = 0;
 
-Jam = 2*A*cos(2*pi*(f0-100000)*t);
+Jam = 4*A*cos(2*pi*(f0-100000)*t);
 
 qcno_dB = 45; qcno = 10^(qcno_dB/10); 
 STD_Noise = A / sqrt(4 * qcno * Td); % СКО шума
