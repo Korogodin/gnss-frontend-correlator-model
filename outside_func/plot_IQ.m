@@ -37,16 +37,16 @@ end
     grid(h_fig_main.axes_Q, 'on');
 
 if (isunix)    
-    h = legend(h_fig_main.axes_I, 'Exp','SE',1);
+    h = legend(h_fig_main.axes_I, 'Exp','SE');
 else
-    h = legend(h_fig_main.axes_I, 'Эксп','СЭ',1);
+    h = legend(h_fig_main.axes_I, 'Эксп','СЭ');
 end
 set(h, 'Box', 'off')
 
 if (isunix)    
-    h = legend(h_fig_main.axes_Q, 'Exp','SE',1);
+    h = legend(h_fig_main.axes_Q, 'Exp','SE');
 else
-    h = legend(h_fig_main.axes_Q, 'Эксп','СЭ',1);
+    h = legend(h_fig_main.axes_Q, 'Эксп','СЭ');
 end
 set(h, 'Box', 'off')
 
